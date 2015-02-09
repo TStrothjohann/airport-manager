@@ -1,4 +1,5 @@
 require 'plane'
+
 describe Plane do
 
 let(:plane){Plane.new}
@@ -18,10 +19,6 @@ let(:weather){double :weather, sunny: true}
 	it "should be able to take off" do
 		plane.take_off!
 		expect(plane).to be_flying
-	end
-
-	it "shouldn't be able to land when weather is stormy" do
-
 	end
 
 

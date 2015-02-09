@@ -1,4 +1,4 @@
-require './lib/weather'
+require 'weather'
 
 class WeatherFakeClass; include Weather; end
 

@@ -1,4 +1,5 @@
-require 'weather'
+require_relative 'weather'
+require 'plane'
 
 class Airport
 	include Weather
@@ -7,16 +8,31 @@ class Airport
 
 	def initialize
 		@planes ||= []
+		@capacity = 6
 	end 
-	
-	def dock(landed_plane)
-		planes << landed_plane
+
+	def airport
+		@airport = Airport.new
+	end
+
+	def dock(plane)
+		if airport.sunny?
+			plane.land! & planes << plane
+		else 
+			puts "You cannot land! Weather is too stormy"
+		end
 	end
 
 	def undock(landed_plane)
+		if airport.sunny?
 		planes.delete(landed_plane)
 		landed_plane.take_off!
+		else 
+			puts "You cannot take off! Weather is too stormy"
+		end
 	end
+
+
 
 
 end

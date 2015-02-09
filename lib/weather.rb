@@ -8,5 +8,4 @@ module Weather
 		generate_weather == "sunny"
 	end
 
-
 end
