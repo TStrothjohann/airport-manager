@@ -26,7 +26,6 @@ Plane
 Wheather, are you sunny or stormy? 
 
 
- 
 
 The specs are located at: http://bit.ly/1dFD7f1. 
 

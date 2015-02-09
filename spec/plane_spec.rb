@@ -5,8 +5,6 @@ describe Plane do
 let(:plane){Plane.new}
 let(:weather){double :weather, sunny: true}
 
-
-
 	it "should be flying, when created" do
 		expect(plane).to be_flying
 	end
