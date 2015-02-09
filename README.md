@@ -8,28 +8,30 @@ Classes and Modules
 - plane can start (change status to flying)
 - plane can land (change status to landed)
 
-
-
 ###Module: Weather
 - can be sunny
 - can be stormy
-(Random - more likely to be sunny - https://www.relishapp.com/rspec/rspec-mocks/docs. There’s an example of using a test double to test a die that’s relevant to testing random weather in the test.)
+The moduke returns randomly sunny or stormy but tends to sunny (1:4).
 
 ###Class: Airport
-- can dock planes
-- can undock planes
-- If the weather is stormy planes cannot land or take off
+- docking and undocking planes
+    -- is able to dock landed planes
+    -- is able to send take_off!-method to planes, when sunny
+    -- is able to send land!-method to planes
+- Checks weather and space before sending take_off! or land message to planes
+    -- should not be able to send take_off!-method if weather is stormy
+    -- should not send land!-method if weather is stormy
+    -- a plane cannot land if the airport is full
+- The grand final (last spec)
+    -- all planes can land and all planes can take off. When docked, their status is not flying, and the airport is full. After take-off the planes are all flying again.
 
 ##CRC
 
 Plane
 Wheather, are you sunny or stormy? 
 
+Airport
+Checks weather (Module Weather) and space/capacity (Class Airport)
 
-
-The specs are located at: http://bit.ly/1dFD7f1. 
-
-The submission will be judged on the following criteria:
-Tests pass
-Tests coverage is good
-The code is elegant: every class has a clear responsibility, methods are short etc.
+Weather (Module)
+generates random weather and has a public interface telling whether it's sunny or stormy.

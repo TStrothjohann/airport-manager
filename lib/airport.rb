@@ -23,9 +23,6 @@ class Airport
 	def undock(landed_plane)
 		if sunny?
 			@undockedplanes = planes.reject {|lp| lp == landed_plane} 
-			#planes.delete(landed_plane)
-			#deleted = ary.select( &:odd? ).tap{|odd| ary -= odd }
-
 			landed_plane.take_off!
 		else 
 			p "You cannot take off!"
