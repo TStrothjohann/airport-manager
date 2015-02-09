@@ -5,6 +5,7 @@ class Airport
 	include Weather
 
 	attr_reader :planes
+	attr_reader :undockedplanes
 
 	def initialize
 		@planes ||= []
@@ -21,7 +22,10 @@ class Airport
 
 	def undock(landed_plane)
 		if sunny?
-			planes.delete(landed_plane)
+			@undockedplanes = planes.reject {|lp| lp == landed_plane} 
+			#planes.delete(landed_plane)
+			#deleted = ary.select( &:odd? ).tap{|odd| ary -= odd }
+
 			landed_plane.take_off!
 		else 
 			p "You cannot take off!"
@@ -29,7 +33,7 @@ class Airport
 	end
 
 	def space?
-		@planes.count <= @capacity
+		@planes.count < @capacity
 	end
 
 

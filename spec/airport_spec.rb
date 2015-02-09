@@ -47,19 +47,22 @@ describe Airport do
 	  end
 	end
 
-	# grand final
+# 	grand final
 # Given 6 planes, each plane must land. When the airport is full, every plane must take off again.
 # Be careful of the weather, it could be stormy!
 # Check when all the planes have landed that they have the right status "landed"
 # Once all the planes are in the air again, check that they have the status of flying!
-	# describe "The grand final (last spec)" do
-	#   it 'all planes can land and all planes can take off' do
-	#   	expect(airport).to receive(:sunny?).and_return(true)
-	#   	6.times{airport.dock(plane)}
-	#   	expect(airport).to be_full
-	#   	expect(airport.planes).not_to contain
-
-
-	#   end
-	# end
+	context "The grand final (last spec)" do
+	  it 'all planes can land and all planes can take off' do
+	  	6.times do expect(airport).to receive(:sunny?).and_return(true)
+			airport.dock(Plane.new) end
+			expect(airport).not_to be_space
+			airport.planes.each {|p| expect(p.flying?).not_to eq(true)}
+			airport.planes.each do |palala| 
+				expect(airport).to receive(:sunny?).and_return(true)
+				airport.undock(palala)
+			end
+			airport.undockedplanes.each {|p| expect(p.flying?).to eq(true)}
+	  end
+	end
 end
